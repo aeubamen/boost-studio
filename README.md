@@ -75,6 +75,7 @@ Nothing is ever posted without your explicit yes on the exact preview.
 |---|---|
 | `studio-start` | Picks the brand and the mode, then routes the request |
 | `studio-research` | Reads public pages, YouTube and GitHub without logging in to any account |
+| `studio-chat` | Chats with and searches the content of a link you give (public pages and posts), saves notes for later search |
 | `studio-script` | Three hook options from 12 original formulas, a script, a timed beat sheet |
 | `studio-caption` | Writes the caption and lints it (visible text before "... more", dashes, hashtags, forbidden claims) |
 | `studio-plan` | A week of posts: format, idea, hook, asset, status |
