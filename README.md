@@ -6,6 +6,23 @@ A content toolkit for small businesses in Kurdistan and Iraq: research, script, 
 video and (optionally) publish. Everything is a Claude Code skill plus small scripts, with one
 folder per brand so voice, colours and rules never get mixed up. Kurdish (Sorani) and Arabic, right-to-left, are first-class.
 
+## Requirements
+- [Claude Code](https://claude.com/claude-code) (the skills are Claude Code skills)
+- Node.js 22+ and ffmpeg (video templates)
+- Optional: `uv` + [Agent-Reach](https://github.com/Panniantong/Agent-Reach) for login-free research, [ai-media-editor](https://github.com/ellmos-ai/ai-media-editor) for transcribing your own recordings, a PostZen account for scheduled posting
+
+## Quick start
+After `./install.sh`, open Claude Code in this folder and try:
+```
+/studio-start  make a 20 second reel for my shop
+```
+```
+Write three hook options for a reel about <your offer> using studio-script, then a caption with studio-caption
+```
+```
+Plan my week of posts with studio-plan
+```
+
 ## Pick your way of working
 | Mode | Who posts | When to use |
 |---|---|---|
