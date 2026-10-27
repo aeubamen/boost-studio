@@ -12,6 +12,7 @@ description: Entry point for the boost-studio toolkit. Use when the user says "s
    - **scheduled**: after an explicit "yes" on each item, publish or queue through PostZen (`studio-publish`).
 3. **Route** the goal:
    - find ideas or competitor patterns -> `studio-research`
+   - chat with or search the content of a link (post, page, video) -> `studio-chat`
    - hook, script, beat sheet -> `studio-script`
    - caption or hashtags -> `studio-caption`
    - weekly plan -> `studio-plan`
