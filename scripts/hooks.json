@@ -1,0 +1,77 @@
+{
+  "_note": "Original hook formulas for boost-studio. Kurdish examples are drafts and need a native speaker's review.",
+  "formulas": [
+    {
+      "id": 1,
+      "name": "Direct need",
+      "pattern": "Name the exact thing the viewer wants right now.",
+      "ku_example": "ئەمەت پێویستە؟"
+    },
+    {
+      "id": 2,
+      "name": "Before / after",
+      "pattern": "Show the painful before, then the fix, in one line.",
+      "ku_example": "پێشتر چەند ڕۆژ چاوەڕێ دەبووی، ئێستا بە یەک پەیام."
+    },
+    {
+      "id": 3,
+      "name": "Mistake",
+      "pattern": "One mistake people make when buying/booking X.",
+      "ku_example": "ئەم هەڵەیە مەکە کاتێک شتێک دەکڕیت."
+    },
+    {
+      "id": 4,
+      "name": "Number list",
+      "pattern": "N things to check before X (only real, checkable items).",
+      "ku_example": "٣ شت پێش کڕین چێک بکە."
+    },
+    {
+      "id": 5,
+      "name": "Question from the DMs",
+      "pattern": "Answer the question customers really ask.",
+      "ku_example": "زۆر کەس دەپرسن: گەرەنتی هەیە؟"
+    },
+    {
+      "id": 6,
+      "name": "Behind the counter",
+      "pattern": "Show what happens in the shop/studio nobody sees.",
+      "ku_example": "ئەوەی لە دووکانەکە ڕوودەدات پێش ئەوەی ئۆردەر بنێریت."
+    },
+    {
+      "id": 7,
+      "name": "Myth bust",
+      "pattern": "State a common belief, then correct it.",
+      "ku_example": "دەڵێن ئەمە گرانە. ڕاست نییە."
+    },
+    {
+      "id": 8,
+      "name": "Timer",
+      "pattern": "Do X in N seconds (must be true on screen).",
+      "ku_example": "ئۆردەر لە ٣٠ چرکەدا."
+    },
+    {
+      "id": 9,
+      "name": "Compare",
+      "pattern": "Two options side by side, one verdict.",
+      "ku_example": "ئەمە یان ئەوە؟ سەیر بکە."
+    },
+    {
+      "id": 10,
+      "name": "Local pride",
+      "pattern": "Anchor in the place the audience lives.",
+      "ku_example": "لە شارەکەمانەوە بۆ هەموو عێراق."
+    },
+    {
+      "id": 11,
+      "name": "Show the result first",
+      "pattern": "Start on the finished result, then explain.",
+      "ku_example": "ئەمە ئەنجامەکەیە. چۆن کرا؟"
+    },
+    {
+      "id": 12,
+      "name": "Direct invitation",
+      "pattern": "One clear action in the first line.",
+      "ku_example": "سەردانی ماڵپەڕەکەمان بکە."
+    }
+  ]
+}

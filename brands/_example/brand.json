@@ -1,0 +1,13 @@
+{
+  "name": "Your Brand",
+  "name_local": "ناوی براندەکەت",
+  "site": "example.com",
+  "languages": ["ku-sorani", "ar", "en"],
+  "direction": "rtl",
+  "colors": { "primary": "#0071e3", "accent": "#f8b828", "bg": "#f4f6f9", "text": "#1b1d22" },
+  "font": "Your font",
+  "logo": "assets/logo.svg",
+  "claims_allowed": ["only facts you can prove, e.g. 'cash on delivery'"],
+  "forbidden": ["guaranteed", "cheapest", "100%"],
+  "note": "Copy this folder to brands/<your-brand>/ and fill it in. Anything you cannot prove stays out of claims_allowed."
+}

@@ -1,0 +1,17 @@
+node_modules/
+out/
+.DS_Store
+*.mp4
+research/*
+!research/.gitkeep
+posts/*
+!posts/.gitkeep
+plans/*
+!plans/.gitkeep
+videos/*
+!videos/.gitkeep
+public/audio/
+generated-images/
+# real brand folders stay private; only the example is published
+brands/*
+!brands/_example/
