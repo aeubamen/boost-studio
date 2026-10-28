@@ -15,3 +15,11 @@ generated-images/
 # real brand folders stay private; only the example is published
 brands/*
 !brands/_example/
+
+# secrets
+.env
+.env.*
+!.env.example
+tools/elevenlabs/out/
+tools/elevenlabs/node_modules/
+*.mp3

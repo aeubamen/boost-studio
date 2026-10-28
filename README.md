@@ -80,6 +80,7 @@ Nothing is ever posted without your explicit yes on the exact preview.
 | `studio-plan` | A week of posts: format, idea, hook, asset, status |
 | `studio-video` | Builds and renders 9:16 motion videos from the Remotion templates |
 | `studio-transcribe` | Transcribes and cuts your own recordings (optional) |
+| `studio-voiceover` | Turns a script into speech with ElevenLabs (optional, uses credits, Kurdish unconfirmed) |
 | `studio-publish` | Manual, assisted or scheduled publishing with an approval gate |
 
 Scripts you can run on their own:
@@ -107,7 +108,7 @@ cd boost-studio
 ```
 
 **You need:** [Claude Code](https://claude.com/claude-code), Node.js 22+, ffmpeg.
-**Optional:** [`uv`](https://docs.astral.sh/uv/) + [Agent-Reach](https://github.com/Panniantong/Agent-Reach) for login-free research, [ai-media-editor](https://github.com/ellmos-ai/ai-media-editor) for transcribing recordings, a [PostZen](https://www.postzen.dev) account for scheduled posting.
+**Optional:** [`uv`](https://docs.astral.sh/uv/) + [Agent-Reach](https://github.com/Panniantong/Agent-Reach) for login-free research, [ai-media-editor](https://github.com/ellmos-ai/ai-media-editor) for transcribing recordings, a [PostZen](https://www.postzen.dev) account for scheduled posting, an [ElevenLabs](https://elevenlabs.io) account for voiceover (see `tools/elevenlabs/README.md`).
 
 ### A brand folder
 
@@ -141,6 +142,7 @@ Fonts, logos, product photos and sound effects are not included. Add your own un
 - **Kurdish Sorani first, right to left.** Every Kurdish line is a draft until a native speaker approves it.
 - **Real data only.** No invented proof.
 - **No logged-in scraping, no password handling.** Research uses public sources.
+- **Keys stay out of git.** API keys live only in a git-ignored `.env.local`.
 - **You stay in control.** No post goes out without your yes.
 
 ---
@@ -149,8 +151,9 @@ Fonts, logos, product photos and sound effects are not included. Add your own un
 
 ```text
 brands/_example/                  copy this to start a brand
-skills/                           the eight studio-* skills
+skills/                           the nine studio-* skills
 scripts/                          hooks.json, lint_caption.py, beat_sheet.py
+tools/elevenlabs/                 optional voiceover script (ElevenLabs)
 templates/video/starter-story/    neutral Remotion template
 docs/assets/                      images used by this README
 posts/ plans/ research/ videos/   your working output (git-ignored)

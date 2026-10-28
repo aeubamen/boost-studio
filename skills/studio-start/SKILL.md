@@ -17,5 +17,6 @@ description: Entry point for the boost-studio toolkit. Use when the user says "s
    - weekly plan -> `studio-plan`
    - animated video -> `studio-video`
    - recorded voice or footage -> `studio-transcribe`
+   - add a voiceover from a script (ElevenLabs, optional) -> `studio-voiceover`
    - post it -> `studio-publish`
 4. Language defaults come from `brand.json` (Kurdish Sorani, RTL, unless stated). Flag every Kurdish line as "draft, needs native review".

@@ -1,0 +1,12 @@
+{
+  "name": "boost-studio-elevenlabs",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "voiceover": "node --env-file=../../.env.local voiceover.mjs"
+  },
+  "dependencies": {
+    "@elevenlabs/elevenlabs-js": "^2.75.0"
+  }
+}
