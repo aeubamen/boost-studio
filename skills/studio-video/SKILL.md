@@ -11,4 +11,8 @@ Copy it to a working folder, run `npm i`, edit, then render. Add more templates 
 
 **Workflow.** (1) script with `studio-script`; (2) build; (3) check text-only first (`npx tsc --noEmit`), then 1-2 low-scale stills (`npx remotion still ... --scale=0.3`); (4) full render only at the end: `npx remotion render src/index.ts <CompId> out/<name>.mp4 --concurrency=4`.
 
+**Retention gates.** Plan the beats with `studio-retention`, then pass G2 on `videos/<name>/plan.json` before the first still, G3 before the full render and G4 on the finished file (`node tools/retention/gate.mjs`). Anything but a pass means go back, fix, run again (2 rounds, then ask the user).
+
+**Review before showing.** After every render run `studio-review` (`node tools/render-check/check.mjs <file> --expect-audio --expect-duration <s>`). Present only a pass.
+
 **Rules.** RTL text, brand font from the brand folder, keep important content out of the bottom ~250px and top ~150px (Instagram UI). Real UI and real product data only; no invented prices or claims. Sound effects come from the user's own `public/audio` folder (see `templates/video/AUDIO.md`); never redistribute them. Always keep earlier versions; name new ones v2, v3.

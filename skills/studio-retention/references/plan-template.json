@@ -1,0 +1,108 @@
+{
+ "duration": 14.4,
+ "loop": true,
+ "shots": [
+  {
+   "id": 1,
+   "beat": "hook",
+   "start": 0,
+   "end": 2.4,
+   "text": "Will they find it?",
+   "events": [
+    {
+     "t": 0.1,
+     "type": "move",
+     "dur": 0.3
+    },
+    {
+     "t": 1.4,
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "beat": "stakes",
+   "start": 2.4,
+   "end": 4.6,
+   "text": "Hundreds of posts",
+   "events": [
+    {
+     "t": 3.2,
+     "type": "move",
+     "dur": 0.3
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "beat": "turn",
+   "start": 4.6,
+   "end": 7.0,
+   "text": "They give up",
+   "sound": "tick",
+   "events": [
+    {
+     "t": 4.7,
+     "type": "move",
+     "dur": 0.3
+    },
+    {
+     "t": 5.8,
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "beat": "turn",
+   "start": 7.0,
+   "end": 9.4,
+   "text": "The fix? A real shop",
+   "sound": "tick",
+   "events": [
+    {
+     "t": 7.1,
+     "type": "zoom"
+    },
+    {
+     "t": 8.2,
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "beat": "payoff",
+   "start": 9.4,
+   "end": 12.2,
+   "text": "Search by type",
+   "events": [
+    {
+     "t": 9.5,
+     "type": "move",
+     "dur": 0.6
+    },
+    {
+     "t": 10.5,
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "beat": "cta",
+   "start": 12.2,
+   "end": 14.4,
+   "text": "Add your shop",
+   "events": [
+    {
+     "t": 12.3,
+     "type": "move",
+     "dur": 0.4
+    }
+   ]
+  }
+ ],
+ "_notes": "Passing example. beats: hook stakes setup turn mid-loop payoff cta. event types: cut move zoom text sound (every shot start counts as a cut). Copy times from the Remotion T timeline."
+}

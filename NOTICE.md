@@ -15,3 +15,11 @@ The external tools (agent-reach, ai-media-editor, Remotion, PostZen) keep their 
 licences and terms. Remotion is free for individuals and small teams; check its
 licence before commercial use at larger scale.
 
+
+## Ideas from another project (no code copied)
+
+The final-render self-review in `studio-review` (inspect the render before presenting it, critique that carries a concrete fix, pass / revise / fail) follows the approach of calesthio/OpenMontage, which is AGPL-3.0. Only the idea was used; none of its code or text was copied.
+
+## Retention research
+
+`skills/studio-retention/references/sources.md` lists the public pages used for the retention rules and how far each can be trusted. They are creator and vendor guides, platform statements and a few studies, used as ideas only.

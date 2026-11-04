@@ -5,7 +5,8 @@ Thanks for helping. Good first contributions:
 1. **Wording:** fix a Kurdish or Arabic line in `scripts/hooks.json`, a template, or a skill.
 2. **Hook formulas:** add one to `scripts/hooks.json` (id, name, pattern, example). Keep examples neutral, with no real brands or numbers.
 3. **Checks:** add a rule to `scripts/lint_caption.py` and test it on a sample caption.
-4. **Templates:** add a neutral Remotion template under `templates/video/`. It must render with no private assets.
+4. **Retention rules:** add or adjust a check in `tools/retention/` only with a source or a result from real analytics, and label it platform, research, vendor or hypothesis in `skills/studio-retention/references/sources.md`.
+5. **Templates:** add a neutral Remotion template under `templates/video/`. It must render with no private assets.
 
 Rules:
 - No logos, fonts, photos, music or sound effects you do not have the right to share.

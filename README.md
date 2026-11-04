@@ -5,6 +5,7 @@
 <p align="center">
   <a href="#quick-start">Quick start</a> ·
   <a href="#skills">Skills</a> ·
+  <a href="#retention-gates">Retention</a> ·
   <a href="#three-ways-to-work">Modes</a> ·
   <a href="#video-templates">Video</a> ·
   <a href="#contributing">Contributing</a> ·
@@ -23,7 +24,7 @@
 
 ## What is Boost Studio
 
-Boost Studio is a **content toolkit for small businesses in Kurdistan and Iraq**. It turns Claude Code into a small content studio: research what works, write the hook and script, lint the caption, build a 9:16 video, and (only if you want) publish.
+Boost Studio is a **content toolkit for small businesses in Kurdistan and Iraq**. It turns Claude Code into a small content studio: research what works, write the hook and script, lint the caption, build a 9:16 video, **check that people will watch it to the end**, and (only if you want) publish.
 
 It is a folder of **Claude Code skills plus small scripts**, with one folder per brand so each brand keeps its own voice, colours and rules. Kurdish (Sorani) and Arabic, right to left, are first-class, not an afterthought.
 
@@ -78,7 +79,9 @@ Nothing is ever posted without your explicit yes on the exact preview.
 | `studio-script` | Three hook options from 12 original formulas, a script, a timed beat sheet |
 | `studio-caption` | Writes the caption and lints it (visible text before "... more", dashes, hashtags, forbidden claims) |
 | `studio-plan` | A week of posts: format, idea, hook, asset, status |
+| `studio-retention` | Plans the story so viewers reach the last shot: open loop, beat map, one short ask. Includes four retention gates (see below) |
 | `studio-video` | Builds and renders 9:16 motion videos from the Remotion templates |
+| `studio-review` | Checks a finished render before you see it: size, duration, black frames, freezes, loudness, safe-area frame sheet |
 | `studio-transcribe` | Transcribes and cuts your own recordings (optional) |
 | `studio-voiceover` | Turns a script into speech with ElevenLabs (optional, uses credits, Kurdish unconfirmed) |
 | `studio-publish` | Manual, assisted or scheduled publishing with an approval gate |
@@ -88,7 +91,25 @@ Scripts you can run on their own:
 ```bash
 python3 scripts/lint_caption.py caption.txt --brand brands/<brand>/brand.json
 python3 scripts/beat_sheet.py script.txt --target 20
+node tools/retention/lint.mjs script.txt --target 20      # tagged script: [hook] [stakes] [turn] [payoff] [cta]
+node tools/retention/gate.mjs plan videos/<name>/plan.json
+node tools/render-check/check.mjs out/video.mp4 --expect-duration 20
 ```
+
+---
+
+## Retention gates
+
+A video nobody watches to the end does not help a brand. Four gates score each stage from 0 to 100 (**pass = 80 or more and no failure**). Anything less goes back to the step that caused it, with a concrete fix per finding. After two rounds on the same stage, the skill stops and asks you.
+
+| Gate | Checks | Goes back to |
+|---|---|---|
+| **G1 script** | hook first, a question open until the payoff, payoff late (about 70-90%), one short ask last | `studio-script` |
+| **G2 plan** | scenes and cuts, motion in the first 0.5 s, a change at every turn, quiet stretches, payoff hold, text read time, one emphasis per shot | the shot plan |
+| **G3 build** | the same checks on the real timeline before the full render | `studio-video` |
+| **G4 render** | measured on the file: cuts, frozen stretches, motion at the start, last frame vs first | `studio-video`, re-render |
+
+Every rule is labelled **platform**, **research**, **vendor** or **hypothesis** in [`skills/studio-retention/references/sources.md`](skills/studio-retention/references/sources.md). Most numbers are rules of thumb from creator guides, not measured facts, so test them on your own analytics (skip rate, retention chart, average watch time, sends per reach). The gates check structure only; they cannot tell you whether the story is good.
 
 ---
 
@@ -151,9 +172,11 @@ Fonts, logos, product photos and sound effects are not included. Add your own un
 
 ```text
 brands/_example/                  copy this to start a brand
-skills/                           the nine studio-* skills
+skills/                           the eleven studio-* skills
 scripts/                          hooks.json, lint_caption.py, beat_sheet.py
 tools/elevenlabs/                 optional voiceover script (ElevenLabs)
+tools/retention/                  lint.mjs (script) and gate.mjs (script, plan, render)
+tools/render-check/               check.mjs: automatic review of a finished render
 templates/video/starter-story/    neutral Remotion template
 docs/assets/                      images used by this README
 posts/ plans/ research/ videos/   your working output (git-ignored)
@@ -186,7 +209,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md). Do not add logos, fonts, photos 
 
 ## Credits
 
-Boost Studio is original work, inspired by four MIT-licensed projects. See [NOTICE.md](NOTICE.md).
+Boost Studio is original work, inspired by four MIT-licensed projects and, for the render self-review idea, one AGPL project (ideas only, no code). See [NOTICE.md](NOTICE.md).
 
 ## License
 
