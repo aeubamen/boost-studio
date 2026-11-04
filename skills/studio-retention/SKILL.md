@@ -45,7 +45,7 @@ Story forms that fit a brand with no presenter: problem -> failed fix -> real fi
 
 ## 3. Cuts, animation, keyframes, timing
 - **Pattern interrupt** = any change that resets attention: cut, new angle, full-screen text, size jump, sound change. Creator guides suggest one every 1.5-3 s in short-form; no study ties cut rate to retention. [hypothesis] An eye-tracking study found faster editing shortens gaze fixations, nothing about completion. [research, small] So place changes where the information changes; a cut with no new information is noise. Test with the retention chart.
-- **Cut on motion.** End a shot while something moves and start the next moving the same direction (see `cut-the-curve`, `seam-craft`).
+- **Cut on motion.** End a shot while something moves and start the next moving the same direction.
 - **Keyframes per beat:** hook = fast in (about 0.2 s), turn = a clear move plus a sound accent, payoff = slow landing and a 0.5-1 s hold, CTA = small and calm. A typical move lasts about 0.2-0.5 s; landings slow down, exits speed up.
 - **One emphasised thing per frame.** The eye follows the biggest moving item, so make it the item the story needs.
 - **Text:** at most about 7 words per screen, 1.2-1.5 s minimum read time, text changes with the beat, safe area top 150 / bottom 250.
