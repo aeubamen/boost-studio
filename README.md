@@ -34,19 +34,38 @@ It is a folder of **Claude Code skills plus small scripts**, with one folder per
 
 ## See it
 
-<p align="center">
-  <img src="docs/assets/demo.gif" alt="Starter story template: hook, chat, button, end card" width="240" />
-</p>
+Real reels made and posted with this toolkit, 9:16, Kurdish Sorani, right to left. Both are the latest results at the time of writing.
 
 <table>
 <tr>
-<td width="33%" valign="top"><img src="docs/assets/still-hook.png" alt="Hook card" /><br/><sub><b>1 · Hook</b>: one clear line in the first two seconds.</sub></td>
-<td width="33%" valign="top"><img src="docs/assets/still-chat.png" alt="Chat scene" /><br/><sub><b>2 · Story</b>: a phone chat, a button, a reason to click.</sub></td>
-<td width="33%" valign="top"><img src="docs/assets/still-end.png" alt="End card" /><br/><sub><b>3 · Call to action</b>: name, link, one ask.</sub></td>
+<td width="50%" align="center" valign="top">
+<b>Boost</b> · ad-agency tips<br/><br/>
+<img src="docs/assets/see-boost.gif" alt="Boost reel: four things to prepare before handing ads to an agency" width="240" />
+</td>
+<td width="50%" align="center" valign="top">
+<b>Poshya</b> · fashion marketplace app<br/><br/>
+<img src="docs/assets/see-poshya.gif" alt="Poshya reel: all shops in one app" width="240" />
+</td>
+</tr>
+<tr>
+<td align="center" valign="top">
+<img src="docs/assets/see-boost-1.jpg" alt="Boost: hook" width="31%" /> <img src="docs/assets/see-boost-2.jpg" alt="Boost: story" width="31%" /> <img src="docs/assets/see-boost-3.jpg" alt="Boost: call to action" width="31%" /><br/>
+<sub>hook · story · call to action</sub>
+</td>
+<td align="center" valign="top">
+<img src="docs/assets/see-poshya-1.jpg" alt="Poshya: hook" width="31%" /> <img src="docs/assets/see-poshya-2.jpg" alt="Poshya: story" width="31%" /> <img src="docs/assets/see-poshya-3.jpg" alt="Poshya: call to action" width="31%" /><br/>
+<sub>hook · story · call to action</sub>
+</td>
 </tr>
 </table>
 
-The `starter-story` template above is neutral. Change the text, colours and brand name in one file (`src/brand.ts`) and render.
+Each one follows the same shape: **hook** in the first two seconds, a short **story**, one **call to action**. The GIFs show the first 12 seconds.
+
+The `starter-story` template (neutral, no brand) is the one you get in the repo. Change the text, colours and brand name in one file (`src/brand.ts`) and render.
+
+<p align="center">
+  <img src="docs/assets/demo.gif" alt="Starter story template: hook, chat, button, end card" width="200" />
+</p>
 
 ---
 
