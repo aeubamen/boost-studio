@@ -1,0 +1,48 @@
+{
+  "note": "Used by tools/styleboard. Board-specific choices; brand colours come from brand.json.",
+  "palette": {
+    "bg": "#0b0d12",
+    "fg": "#ffffff",
+    "accent": "#f8b828",
+    "brand": "#0071e3",
+    "alt": "#d6006e",
+    "light": "#f4f6f9",
+    "dark": "#05030f"
+  },
+  "fonts": {
+    "display": "Zain",
+    "latin": "Kanit",
+    "files": [
+      {
+        "family": "Zain",
+        "weight": 400,
+        "path": "fontsource:zain/files/zain-arabic-400-normal.woff2"
+      },
+      {
+        "family": "Zain",
+        "weight": 700,
+        "path": "fontsource:zain/files/zain-arabic-700-normal.woff2"
+      },
+      {
+        "family": "Kanit",
+        "weight": 700,
+        "path": "fontsource:kanit/files/kanit-latin-700-normal.woff2"
+      }
+    ]
+  },
+  "wordmark": "BRAND",
+  "sample": {
+    "hook": "A short hook in the brand language",
+    "sub": "One supporting line",
+    "cta": "The call to action"
+  },
+  "recommend": {
+    "style": "A",
+    "color": "A",
+    "layout": "B",
+    "text": "A",
+    "animation": "B",
+    "speed": "B",
+    "sound": "B"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "brand": "_example",
+  "engine": "lemo-opuscar",
+  "library": "~/lemo-opuscar",
+  "size": "1080x1920",
+  "base_style": "dark-keynote",
+  "alt_styles": [
+    "living-screencast",
+    "whiteboard"
+  ],
+  "why": "Say in one line why this style fits the brand's subject and palette.",
+  "roles": {
+    "stage": "#0b0d12 (near-black)",
+    "text": "#f2f4f8 (off-white)",
+    "one_accent": "#0071e3 for what the thing does, the key number and the call to action",
+    "problem_colour": "a red only while the problem exists"
+  },
+  "fonts": {
+    "local": "your Kurdish/Arabic font",
+    "latin": "Inter"
+  },
+  "colour_notes": "If two things are accent-coloured, one is wrong.",
+  "rules": [
+    "lemo-opuscar is the primary engine; this file answers its questions (use, brand colours, language, size) so the owner is not asked again.",
+    "Render one style frame first and check right-to-left text shaping."
+  ]
+}

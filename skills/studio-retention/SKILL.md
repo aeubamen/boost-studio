@@ -13,14 +13,14 @@ Goal: the viewer reaches the last shot, and the one action is clear. Evidence is
 - YouTube Shorts: since 31 Mar 2025 every start and every loop counts as a view; **Engaged Views** exclude loops. Studio shows Viewed vs Swiped Away. [platform/secondary] So a loop-back inflates views but not engaged views.
 
 ## Retention gates (mandatory; low retention goes back a step)
-`tools/retention/gate.mjs` scores a stage 0-100: pass = 80 or more with no fail. Each fail costs 25 points, each warning 7. Not a pass means **go back to the step named in its output, fix, run it again**. After 2 rounds on the same stage it prints STOP: tell the user what is wrong and ask. Keep history with `--project videos/<name>`.
+`tools/retention/gate.mjs` scores a stage 0-100: pass = 80 or more with no fail. Each fail costs 25 points, each warning 7. Not a pass means **go back to the step named in its output, fix, run it again**. After 2 rounds on the same stage it prints STOP: tell the owner what is wrong and ask. Keep history with `--project projects/<name>`.
 
 | Gate | When | Command | Covers | If not pass, go back to |
 |---|---|---|---|---|
-| G1 script | after `studio-script`, before you build | `node tools/retention/gate.mjs script scripts/<name>.txt --target <s> --project videos/<name>` | hook, loop, stakes, turns, payoff position, one CTA | `studio-script` |
-| G2 plan | after the beat map and storyboard, before the first still | `node tools/retention/gate.mjs plan videos/<name>/plan.json --project videos/<name>` | scenes and cuts, motion in the first 0.5 s, change at every turn, quiet stretches, payoff hold, text read time, one emphasis, keyframe and move durations, sound accents | the beat map (sections 2-3) |
+| G1 script | after `studio-script`, before the style board | `node tools/retention/gate.mjs script scripts/<name>.txt --target <s> --project projects/<name>` | hook, loop, stakes, turns, payoff position, one CTA | `studio-script` |
+| G2 plan | after the beat map and storyboard, before the first still | `node tools/retention/gate.mjs plan projects/<name>/plan.json --project projects/<name>` | scenes and cuts, motion in the first 0.5 s, change at every turn, quiet stretches, payoff hold, text read time, one emphasis, keyframe and move durations, sound accents | the beat map (sections 2-3) |
 | G3 build | after the build, before the full render: rewrite `plan.json` from the real Remotion timeline (`T`) and run G2 again | same as G2 | catches drift between plan and build | `studio-video` |
-| G4 render | right after the render, before `studio-review` | `node tools/retention/gate.mjs render out/<name>.mp4 --project videos/<name>` | measured on the file: cuts, frozen stretches, motion at the start, last vs first frame | `studio-video`, re-render |
+| G4 render | right after the render, before `studio-review` | `node tools/retention/gate.mjs render out/<name>.mp4 --project projects/<name>` | measured on the file: cuts, frozen stretches, motion at the start, last vs first frame | `studio-video`, re-render |
 
 `plan.json` has a template at `references/plan-template.json` (shots with start, end, beat, text, and timed events for each cut, move, zoom, text change or sound). G4 measures the picture only; the frame sheet and `studio-review` still cover meaning, Kurdish shaping and the copy.
 
@@ -45,8 +45,8 @@ Story forms that fit a brand with no presenter: problem -> failed fix -> real fi
 
 ## 3. Cuts, animation, keyframes, timing
 - **Pattern interrupt** = any change that resets attention: cut, new angle, full-screen text, size jump, sound change. Creator guides suggest one every 1.5-3 s in short-form; no study ties cut rate to retention. [hypothesis] An eye-tracking study found faster editing shortens gaze fixations, nothing about completion. [research, small] So place changes where the information changes; a cut with no new information is noise. Test with the retention chart.
-- **Cut on motion.** End a shot while something moves and start the next moving the same direction.
-- **Keyframes per beat:** hook = fast in (about 0.2 s), turn = a clear move plus a sound accent, payoff = slow landing and a 0.5-1 s hold, CTA = small and calm. A typical move lasts about 0.2-0.5 s; landings slow down, exits speed up.
+- **Cut on motion.** End a shot while something moves and start the next moving the same direction (see `cut-the-curve`, `seam-craft`).
+- **Keyframes per beat:** hook = fast in (about 0.2 s), turn = a clear move plus a sound accent, payoff = slow landing and a 0.5-1 s hold, CTA = small and calm. Timing and easing values come from `motionmaxxing`.
 - **One emphasised thing per frame.** The eye follows the biggest moving item, so make it the item the story needs.
 - **Text:** at most about 7 words per screen, 1.2-1.5 s minimum read time, text changes with the beat, safe area top 150 / bottom 250.
 - **Sound:** a small accent on every turn, music dips under the payoff, a quiet last second.
@@ -64,9 +64,9 @@ Story forms that fit a brand with no presenter: problem -> failed fix -> real fi
    `node tools/retention/lint.mjs scripts/<name>.txt --target 20`
    Tags: `[hook] [stakes] [setup] [turn] [payoff] [cta]` at the start of a line; optional `[mid-loop]` and `[cta-soft]` (early mention, must sit in the first quarter).
 2. Fix every `fail`; read each `warn` and decide.
-3. Put the beat map in `videos/<name>/brief.md` (or your own notes) under "Retention plan" (beat, start, end, cut idea, motion, sound).
+3. Put the beat map in `projects/<name>/brief.md` under "Retention plan" (beat, start, end, cut idea, motion, sound).
 4. Build with `studio-video`. After the render `studio-review` also reads the retention list below.
-5. After posting, read Instagram Insights (skip rate, retention chart, average watch time, sends/reach, likes/reach, follows) and write one line in your notes about what worked. Never guess numbers.
+5. After posting, read Instagram Insights (skip rate, retention chart, average watch time, sends/reach, likes/reach, follows) and add one line to the brand's `MOTION.md` Log. Never guess numbers.
 6. **Diagnose by the chart.** Steep drop in the first 3 s = hook/first frame problem. Slow slide through the middle = pacing: cut 20-30% of the middle and compare. Drop in the last 10-20% = the value ended before the CTA, so move the payoff later or shorten the ask. Change one thing per reel so the result means something.
 
 ## 6. Retention review list (used by studio-review)
@@ -79,4 +79,4 @@ Story forms that fit a brand with no presenter: problem -> failed fix -> real fi
 - Last frame matches the first (optional).
 
 ## 7. vidIQ
-The vidIQ MCP is useful for research and for measuring, not for editing: `vidiq_outliers`, `vidiq_trending_videos`, `vidiq_instagram_tiktok_outlier_search` (what hooks win in a niche), `vidiq_video_transcript` and `vidiq_watch_shortform_content` (copy the structure, not the words), `vidiq_channel_analytics` (retention after posting). Its generators (script, video, voiceover) use credits: ask first. Do not use it for Kurdish copy.
+The vidIQ MCP is useful for research and for measuring, not for editing: `vidiq_outliers`, `vidiq_trending_videos`, `vidiq_instagram_tiktok_outlier_search` (what hooks win in a niche), `vidiq_video_transcript` and `vidiq_watch_shortform_content` (copy the structure, not the words), `vidiq_channel_analytics` (retention after posting). Its generators (script, video, voiceover) use credits: ask the owner first. Do not use it for Kurdish copy.

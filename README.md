@@ -94,16 +94,20 @@ Nothing is ever posted without your explicit yes on the exact preview.
 | Skill | What it does |
 |---|---|
 | `studio-start` | Picks the brand and the mode, then routes the request |
+| `studio-brief` | One round of questions, then a style board: 3 samples per choice (style, colour, layout, text, animation, speed, sound) so the owner picks by looking, not describing |
 | `studio-research` | Reads public pages, YouTube and GitHub without logging in to any account |
 | `studio-script` | Three hook options from 12 original formulas, a script, a timed beat sheet |
 | `studio-caption` | Writes the caption and lints it (visible text before "... more", dashes, hashtags, forbidden claims) |
 | `studio-plan` | A week of posts: format, idea, hook, asset, status |
 | `studio-retention` | Plans the story so viewers reach the last shot: open loop, beat map, one short ask. Includes four retention gates (see below) |
-| `studio-video` | Builds and renders 9:16 motion videos from the Remotion templates |
+| `studio-video` | Builds 9:16 videos: [lemo-opuscar](https://github.com/lemomo-ai/lemo-opuscar) styles first, in the brand's colours; Remotion for phone-UI templates, overlays and assembly |
 | `studio-review` | Checks a finished render before you see it: size, duration, black frames, freezes, loudness, safe-area frame sheet |
 | `studio-transcribe` | Transcribes and cuts your own recordings (optional) |
-| `studio-voiceover` | Turns a script into speech with ElevenLabs (optional, uses credits, Kurdish unconfirmed) |
+| `studio-voiceover` | Script to speech in each brand's own voice: Gemini TTS (free tier) or OpenRouter (paid), one take per video, loudness normalized; ElevenLabs optional |
+| `studio-experiments` | The 10 ideas x 5 variants test: control plus hook, production, voiceover and whole-concept variants, with a strict win rule |
 | `studio-publish` | Manual, assisted or scheduled publishing with an approval gate |
+
+Two read-only judges live in `.claude/agents/` (see [Phase agents](#phase-agents)).
 
 Scripts you can run on their own:
 
@@ -113,6 +117,9 @@ python3 scripts/beat_sheet.py script.txt --target 20
 node tools/retention/lint.mjs script.txt --target 20      # tagged script: [hook] [stakes] [turn] [payoff] [cta]
 node tools/retention/gate.mjs plan videos/<name>/plan.json
 node tools/render-check/check.mjs out/video.mp4 --expect-duration 20
+node --env-file=.env.local tools/voiceover/run.mjs script.txt --brand <brand>   # one take in the brand's voice
+node tools/styleboard/make.mjs --brand _example --out videos/<name>/styleboard --hook "..."
+node tools/experiments/report.mjs brands/<brand>/experiments/<plan>.json
 ```
 
 ---
@@ -129,6 +136,33 @@ A video nobody watches to the end does not help a brand. Four gates score each s
 | **G4 render** | measured on the file: cuts, frozen stretches, motion at the start, last frame vs first | `studio-video`, re-render |
 
 Every rule is labelled **platform**, **research**, **vendor** or **hypothesis** in [`skills/studio-retention/references/sources.md`](skills/studio-retention/references/sources.md). Most numbers are rules of thumb from creator guides, not measured facts, so test them on your own analytics (skip rate, retention chart, average watch time, sends per reach). The gates check structure only; they cannot tell you whether the story is good.
+
+---
+
+## Phase agents
+
+Whoever made a reel should not grade it. Two Claude Code sub-agents do the judging, each with its own context and **no Edit or Write tool**: they cannot change the work, post it or spend credits.
+
+| Agent | Judges | Returns |
+|---|---|---|
+| `retention-checker` | a script (G1), a plan (G2/G3) or a render (G4): runs the gate, then adds what a tool cannot see (a weak hook, a payoff that never lands, text too fast to read) | `PASS`, `REVISE`, `FAIL` or `STOP`, up to 6 fixes, and the step to go back to |
+| `reel-reviewer` | a finished reel: render checker, retention gate, loudness, and its own look at the frame sheet (cut-off text, right-to-left shaping, safe areas, brand colours, a call to action on the last frame) | `PASS` or `REVISE` with fixes |
+
+In practice the reviewer caught six visible problems in a reel the gate had passed at 93/100. The brand session still builds the reel; only the judging is split off.
+
+---
+
+## Voice per brand
+
+Each brand keeps its own voice in `brand.json` (`tts`: provider, voice, a style description). `tools/voiceover/run.mjs` generates the whole script as **one take** (one request, same tone across lines), cuts it into lines, and normalizes it to about -16 LUFS. Providers: Gemini TTS on the Google free tier (about 10 requests a day per model) or OpenRouter (paid, a few cents per video, works where Google billing is not available). `tools/gemini-tts/design-voice.mjs` designs a custom voice from a description; `tools/openrouter/usage.mjs` shows what you spent. For Kurdish Sorani, `tools/rastnus/check.mjs` shows corrections before any voice is made and never applies them on its own.
+
+Pick a voice by ear on the same script: one that sounds great in English can pronounce Kurdish badly.
+
+---
+
+## Lessons
+
+Short, concrete things that changed a tool or a rule: [`docs/lessons.md`](docs/lessons.md). For example, Instagram "trial reels" sent through the API are posted as normal public reels, and an editor's render can add glitch frames that the source clips never had.
 
 ---
 
@@ -191,13 +225,19 @@ Fonts, logos, product photos and sound effects are not included. Add your own un
 
 ```text
 brands/_example/                  copy this to start a brand
-skills/                           the eleven studio-* skills
+skills/                           the thirteen studio-* skills
+.claude/agents/                   retention-checker and reel-reviewer (read-only judges)
 scripts/                          hooks.json, lint_caption.py, beat_sheet.py
 tools/elevenlabs/                 optional voiceover script (ElevenLabs)
+tools/gemini-tts/ tools/voiceover/  per-brand voice: Gemini or OpenRouter TTS, one take, loudness
+tools/openrouter/                 spend monitor for the TTS key
+tools/rastnus/                    optional Kurdish Sorani corrector step (local model)
+tools/styleboard/                 A/B/C sample board for studio-brief
+tools/experiments/                report for the 10 x 5 test
 tools/retention/                  lint.mjs (script) and gate.mjs (script, plan, render)
 tools/render-check/               check.mjs: automatic review of a finished render
 templates/video/starter-story/    neutral Remotion template
-docs/assets/                      images used by this README
+docs/                             lessons.md, lemo-brand-styles.md, images used by this README
 posts/ plans/ research/ videos/   your working output (git-ignored)
 ```
 
